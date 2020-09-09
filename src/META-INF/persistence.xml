@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="Proyecto_DespegarPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>proyecto.control.Vuelo</class>
+    <class>proyecto.control.Pasajero</class>
+    <class>proyecto.control.Itinerario</class>
+    <class>proyecto.control.Reserva</class>
+    <class>proyecto.control.Aerolinea</class>
+    <class>proyecto.control.Avion</class>
+    <class>proyecto.control.Aeropuerto</class>
+    <class>proyecto.control.RefAeropuert</class>
+    <class>proyecto.control.Pago</class>
+    <class>proyecto.entidades.Aerolinea</class>
+    <class>proyecto.entidades.Avion</class>
+    <class>proyecto.entidades.Itinerario</class>
+    <class>proyecto.entidades.Vuelo</class>
+    <class>proyecto.entidades.Pago</class>
+    <class>proyecto.entidades.RefAeropuert</class>
+    <class>proyecto.entidades.Aeropuerto</class>
+    <class>proyecto.entidades.Pasajero</class>
+    <class>proyecto.entidades.VistaAviones</class>
+    <class>proyecto.entidades.VistaVuelos</class>
+    <class>proyecto.tests.Usuario</class>
+    <class>proyecto.tests.Reserva</class>
+    <class>proyecto.entidades.Reserva</class>
+    <class>proyecto.entidades.Usuario</class>
+    <class>proyecto.entidades.VistaReserva</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=Despegar"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>
