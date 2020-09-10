@@ -728,13 +728,10 @@ public class fReserva extends javax.swing.JFrame {
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            Vuelo vuelo = new Vuelo();
+            fechasVuelos();
              EntityManagerFactory emf = Persistence.createEntityManagerFactory("Proyecto_DespegarPU");
             EntityManager em = emf.createEntityManager();
-            vuelo = vuelosController.findVuelo(idVuelos[0]);
-            fechaIda.setText(vuelo.getFecha().toString());
-            vuelo = vuelosController.findVuelo(idVuelos[1]);
-            fechaRetorno.setText(vuelo.getFecha().toString());
+            
             Usuario usuario = new Usuario();
             Reserva reserva = new Reserva();
             //creacion del usuario
@@ -795,6 +792,8 @@ public class fReserva extends javax.swing.JFrame {
 
     private void kButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton8ActionPerformed
         // TODO add your handling code here:
+        new VentanaPrincipal().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_kButton8ActionPerformed
 
     private void cedulaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaUsuarioActionPerformed
@@ -832,7 +831,7 @@ public class fReserva extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                int a[] = {1,2};
+                int a[] = {1};
                 new fReserva(a, "Solo Ida", 45.5).setVisible(true);
             }
         });
@@ -883,6 +882,19 @@ public class fReserva extends javax.swing.JFrame {
             listaVuelos.setModel(modelVuelos);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    
+    private void fechasVuelos(){
+        Vuelo vuelo = new Vuelo();
+        if(idVuelos.length>1){
+            vuelo = vuelosController.findVuelo(idVuelos[0]);
+            fechaIda.setText(vuelo.getFecha().toString());
+            vuelo = vuelosController.findVuelo(idVuelos[1]);
+            fechaRetorno.setText(vuelo.getFecha().toString());
+        }else if(idVuelos.length==1){
+            vuelo = vuelosController.findVuelo(idVuelos[0]);
+            fechaIda.setText(vuelo.getFecha().toString());
         }
     }
 

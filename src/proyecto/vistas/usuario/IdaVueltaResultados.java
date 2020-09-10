@@ -507,6 +507,7 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
     }
     private void listarResultadosRetorno(String origen, String destino, Date fecha, int pasajeros) {
         try {
+             System.out.println("Origen " + origen + "Destino "+destino+"Fecha "+fecha);
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("Proyecto_DespegarPU");
             EntityManager em = emf.createEntityManager();
             String fechaQ = new SimpleDateFormat("yyyy-MM-dd").format(fecha);

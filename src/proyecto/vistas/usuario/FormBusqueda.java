@@ -793,6 +793,7 @@ public class FormBusqueda extends javax.swing.JFrame {
             fechaRetorno = fechaVueltaIV.getCalendar().getTime();
             origen = origenIdaIV.getText();
             destino = destinoIdaIIV.getText();
+            System.out.println(origen + " " + destino);
             new IdaVueltaResultados(origen, destino, fechaida, nAdultos, nMenores, fechaRetorno).setVisible(true);
             this.dispose();
         }catch(Exception e){
