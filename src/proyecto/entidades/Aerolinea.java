@@ -102,7 +102,7 @@ public class Aerolinea implements Serializable {
 
     @Override
     public String toString() {
-        return "proyecto.entidades.Aerolinea[ idAerolinea=" + idAerolinea + " ]";
+        return idAerolinea+"";
     }
     
 }

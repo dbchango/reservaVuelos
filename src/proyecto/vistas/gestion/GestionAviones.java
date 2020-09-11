@@ -9,20 +9,35 @@ import java.awt.EventQueue;
 import java.beans.Beans;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.RollbackException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import proyecto.control.AerolineaJpaController;
+import proyecto.control.AvionJpaController;
+import proyecto.control.exceptions.NonexistentEntityException;
+import proyecto.entidades.Aerolinea;
+import proyecto.entidades.Avion;
 
 /**
  *
  * @author David
  */
 public class GestionAviones extends JPanel {
+    private static AerolineaJpaController aerolineasController = new AerolineaJpaController();    
+    private static DefaultTableModel aerolineasModel;
+    private static DefaultTableModel avionesModel;
+    private static AvionJpaController avionesController = new AvionJpaController();
     
     public GestionAviones() {
         initComponents();
         if (!Beans.isDesignTime()) {
             entityManager.getTransaction().begin();
+            listarAerolineas();
+            listarAviones();
         }
     }
 
@@ -34,49 +49,32 @@ public class GestionAviones extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("Proyecto_DespegarPU").createEntityManager();
         query = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT a FROM Avion a");
         list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(query.getResultList());
-        masterScrollPane = new javax.swing.JScrollPane();
-        masterTable = new javax.swing.JTable();
         idAvionLabel = new javax.swing.JLabel();
         capacidadLabel = new javax.swing.JLabel();
         marcaLabel = new javax.swing.JLabel();
         modeloLabel = new javax.swing.JLabel();
         idAerolineaLabel = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
+        newButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaAerolineas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        idAerolinea = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaAviones = new javax.swing.JTable();
         idAvionField = new javax.swing.JTextField();
         capacidadField = new javax.swing.JTextField();
         marcaField = new javax.swing.JTextField();
         modeloField = new javax.swing.JTextField();
-        idAerolineaField = new javax.swing.JTextField();
-        saveButton = new javax.swing.JButton();
-        refreshButton = new javax.swing.JButton();
-        newButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
+        deleteButton1 = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
 
         FormListener formListener = new FormListener();
-
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, masterTable);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idAvion}"));
-        columnBinding.setColumnName("Id Avion");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${capacidad}"));
-        columnBinding.setColumnName("Capacidad");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${marca}"));
-        columnBinding.setColumnName("Marca");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${modelo}"));
-        columnBinding.setColumnName("Modelo");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idAerolinea}"));
-        columnBinding.setColumnName("Id Aerolinea");
-        columnBinding.setColumnClass(proyecto.entidades.Aerolinea.class);
-        bindingGroup.addBinding(jTableBinding);
-
-        masterScrollPane.setViewportView(masterTable);
 
         idAvionLabel.setText("Id Avion:");
 
@@ -88,183 +86,217 @@ public class GestionAviones extends JPanel {
 
         idAerolineaLabel.setText("Id Aerolinea:");
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.idAvion}"), idAvionField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setSourceUnreadableValue("null");
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), idAvionField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.capacidad}"), capacidadField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setSourceUnreadableValue("null");
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), capacidadField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.marca}"), marcaField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setSourceUnreadableValue("null");
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), marcaField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.modelo}"), modeloField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setSourceUnreadableValue("null");
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), modeloField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.idAerolinea}"), idAerolineaField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setSourceUnreadableValue("null");
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), idAerolineaField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
         saveButton.setText("Save");
         saveButton.addActionListener(formListener);
-
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(formListener);
 
         newButton.setText("New");
         newButton.addActionListener(formListener);
 
-        deleteButton.setText("Delete");
+        listaAerolineas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), deleteButton, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
+            }
+        ));
+        listaAerolineas.addMouseListener(formListener);
+        jScrollPane1.setViewportView(listaAerolineas);
 
-        deleteButton.addActionListener(formListener);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Seleccione la aerolínea a la que pertenece el avión");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Gestion de aviones");
+
+        idAerolinea.setEditable(false);
+
+        listaAviones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        listaAviones.addMouseListener(formListener);
+        jScrollPane2.setViewportView(listaAviones);
+
+        idAvionField.setEditable(false);
+
+        deleteButton1.setText("Delete");
+        deleteButton1.addActionListener(formListener);
+
+        regresar.setText("Regresar");
+        regresar.addActionListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(newButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(refreshButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saveButton)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idAvionLabel)
-                    .addComponent(capacidadLabel)
-                    .addComponent(marcaLabel)
-                    .addComponent(modeloLabel)
-                    .addComponent(idAerolineaLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idAvionField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(capacidadField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(marcaField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(modeloField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(idAerolineaField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idAvionLabel)
+                                    .addComponent(capacidadLabel)
+                                    .addComponent(marcaLabel)
+                                    .addComponent(modeloLabel)
+                                    .addComponent(idAerolineaLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(idAerolinea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(idAvionField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(capacidadField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(marcaField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(modeloField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(newButton)
+                                .addGap(10, 10, 10)
+                                .addComponent(deleteButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(saveButton))
+                            .addComponent(regresar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deleteButton, newButton, refreshButton, saveButton});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {newButton, saveButton});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idAvionLabel)
-                    .addComponent(idAvionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(capacidadLabel)
-                    .addComponent(capacidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(marcaLabel)
-                    .addComponent(marcaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(modeloLabel)
-                    .addComponent(modeloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idAerolineaLabel)
-                    .addComponent(idAerolineaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveButton)
-                    .addComponent(refreshButton)
-                    .addComponent(deleteButton)
-                    .addComponent(newButton))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 12, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idAvionLabel)
+                            .addComponent(idAvionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(capacidadLabel)
+                            .addComponent(capacidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(marcaLabel)
+                            .addComponent(marcaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(modeloLabel)
+                            .addComponent(modeloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idAerolineaLabel)
+                            .addComponent(idAerolinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveButton)
+                            .addComponent(newButton)
+                            .addComponent(deleteButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(regresar)))
                 .addContainerGap())
         );
-
-        bindingGroup.bind();
     }
 
     // Code for dispatching events from components to event handlers.
 
-    private class FormListener implements java.awt.event.ActionListener {
+    private class FormListener implements java.awt.event.ActionListener, java.awt.event.MouseListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             if (evt.getSource() == saveButton) {
                 GestionAviones.this.saveButtonActionPerformed(evt);
             }
-            else if (evt.getSource() == refreshButton) {
-                GestionAviones.this.refreshButtonActionPerformed(evt);
-            }
             else if (evt.getSource() == newButton) {
                 GestionAviones.this.newButtonActionPerformed(evt);
             }
-            else if (evt.getSource() == deleteButton) {
-                GestionAviones.this.deleteButtonActionPerformed(evt);
+            else if (evt.getSource() == deleteButton1) {
+                GestionAviones.this.deleteButton1ActionPerformed(evt);
             }
+            else if (evt.getSource() == regresar) {
+                GestionAviones.this.regresarActionPerformed(evt);
+            }
+        }
+
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            if (evt.getSource() == listaAerolineas) {
+                GestionAviones.this.listaAerolineasMouseClicked(evt);
+            }
+            else if (evt.getSource() == listaAviones) {
+                GestionAviones.this.listaAvionesMouseClicked(evt);
+            }
+        }
+
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseReleased(java.awt.event.MouseEvent evt) {
         }
     }// </editor-fold>//GEN-END:initComponents
 
     
-    @SuppressWarnings("unchecked")
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        entityManager.getTransaction().rollback();
-        entityManager.getTransaction().begin();
-        java.util.Collection data = query.getResultList();
-        for (Object entity : data) {
-            entityManager.refresh(entity);
-        }
-        list.clear();
-        list.addAll(data);
-    }//GEN-LAST:event_refreshButtonActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        int[] selected = masterTable.getSelectedRows();
-        List<proyecto.entidades.Avion> toRemove = new ArrayList<proyecto.entidades.Avion>(selected.length);
-        for (int idx = 0; idx < selected.length; idx++) {
-            proyecto.entidades.Avion a = list.get(masterTable.convertRowIndexToModel(selected[idx]));
-            toRemove.add(a);
-            entityManager.remove(a);
-        }
-        list.removeAll(toRemove);
-    }//GEN-LAST:event_deleteButtonActionPerformed
-
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
-        proyecto.entidades.Avion a = new proyecto.entidades.Avion();
-        entityManager.persist(a);
-        list.add(a);
-        int row = list.size() - 1;
-        masterTable.setRowSelectionInterval(row, row);
-        masterTable.scrollRectToVisible(masterTable.getCellRect(row, 0, true));
+      
     }//GEN-LAST:event_newButtonActionPerformed
+    
+    private void listarAerolineas(){    
+        List<Aerolinea> aerolineas = aerolineasController.findAerolineaEntities();
+        String[] titles = {"ID AEROLINEA", "NOMBRE", "PÁGINA WEB"};
+        aerolineasModel = new DefaultTableModel(null, titles);
+        String[] aerolinea;
+        aerolinea = new String[3];
+        for (Aerolinea item : aerolineas) {
+            aerolinea[0] = item.getIdAerolinea().toString();
+            aerolinea[1] = item.getNombre();
+            aerolinea[2] = item.getPaginaweb();
+            aerolineasModel.addRow(aerolinea);
+        }
+        listaAerolineas.setModel(aerolineasModel);
+                
+    }
+    
+    
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
-            entityManager.getTransaction().commit();
-            entityManager.getTransaction().begin();
+            Aerolinea a = aerolineasController.findAerolinea(Integer.parseInt(idAerolinea.getText()));
+            Avion av = new Avion();
+            av.setCapacidad(Integer.parseInt(capacidadField.getText()));
+            av.setIdAerolinea(a);
+            av.setMarca(marcaField.getText());
+            av.setModelo(modeloField.getText());
+            avionesController.create(av);
+            listarAviones();
         } catch (RollbackException rex) {
             rex.printStackTrace();
             entityManager.getTransaction().begin();
@@ -277,28 +309,86 @@ public class GestionAviones extends JPanel {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void listaAerolineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaAerolineasMouseClicked
+        // TODO add your handling code here:
+        int row = listaAerolineas.getSelectedRow();
+        idAerolinea.setText(aerolineasModel.getValueAt(row, 0).toString());
+               
+    }//GEN-LAST:event_listaAerolineasMouseClicked
+
+    private void listaAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaAvionesMouseClicked
+        // TODO add your handling code here:
+        int row = listaAviones.getSelectedRow();
+        idAvionField.setText(avionesModel.getValueAt(row, 0).toString());
+        capacidadField.setText(avionesModel.getValueAt(row, 1).toString());
+        marcaField.setText(avionesModel.getValueAt(row, 2).toString());
+        modeloField.setText(avionesModel.getValueAt(row, 3).toString());
+        idAerolinea.setText(avionesModel.getValueAt(row, 4).toString());
+        
+    }//GEN-LAST:event_listaAvionesMouseClicked
+
+    private void deleteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            int row = listaAviones.getSelectedRow();
+            String ida =  idAvionField.getText();
+            avionesController.destroy(Integer.parseInt(ida));
+            listarAviones();
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(GestionAviones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_deleteButton1ActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        // TODO add your handling code here:
+        new GestionMain().setVisible(true);
+        
+    }//GEN-LAST:event_regresarActionPerformed
+
+    private void listarAviones(){
+        String[] titulos = {"ID AVION","CAPACIDAD","MARCA","MODELO","ID_AEROLINEA"};
+        String[] avion;
+        avion = new String[5];
+        List<Avion> aviones =  avionesController.findAvionEntities();
+        avionesModel = new DefaultTableModel(null, titulos);
+        for (Avion item : aviones) {
+            avion[0] = item.getIdAvion().toString();
+            avion[1] = item.getCapacidad().toString();
+            avion[2] = item.getMarca();
+            avion[3] = item.getModelo();
+            avion[4] = item.getIdAerolinea().toString();
+            avionesModel.addRow(avion);
+        }
+        listaAviones.setModel(avionesModel);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacidadField;
     private javax.swing.JLabel capacidadLabel;
-    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton deleteButton1;
     private javax.persistence.EntityManager entityManager;
-    private javax.swing.JTextField idAerolineaField;
+    private javax.swing.JTextField idAerolinea;
     private javax.swing.JLabel idAerolineaLabel;
     private javax.swing.JTextField idAvionField;
     private javax.swing.JLabel idAvionLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private java.util.List<proyecto.entidades.Avion> list;
+    private javax.swing.JTable listaAerolineas;
+    private javax.swing.JTable listaAviones;
     private javax.swing.JTextField marcaField;
     private javax.swing.JLabel marcaLabel;
-    private javax.swing.JScrollPane masterScrollPane;
-    private javax.swing.JTable masterTable;
     private javax.swing.JTextField modeloField;
     private javax.swing.JLabel modeloLabel;
     private javax.swing.JButton newButton;
     private javax.persistence.Query query;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton regresar;
     private javax.swing.JButton saveButton;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
     public static void main(String[] args) {
         /* Set the Nimbus look and feel */

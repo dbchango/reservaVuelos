@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/gestion/GestionAerolinea.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/control/AvionJpaController.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/gestion/GestionMain.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/entidades/Aerolinea.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/gestion/GestionAviones.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/usuario/VentanaPrincipal.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/gestion/GestionVuelo.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/usuario/fReserva.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/gestion/GestionAeropuertos.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/despegar/ProyectoDespegar.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/Proyecto%20Despegar/src/proyecto/vistas/usuario/IdaVueltaResultados.java</file>
+        </group>
     </open-files>
 </project-private>

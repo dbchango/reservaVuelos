@@ -5,6 +5,8 @@
  */
 package proyecto.entidades;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -19,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -29,6 +32,9 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Avion.findAll", query = "SELECT a FROM Avion a")})
 public class Avion implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,7 +66,9 @@ public class Avion implements Serializable {
     }
 
     public void setIdAvion(Integer idAvion) {
+        Integer oldIdAvion = this.idAvion;
         this.idAvion = idAvion;
+        changeSupport.firePropertyChange("idAvion", oldIdAvion, idAvion);
     }
 
     public Integer getCapacidad() {
@@ -68,7 +76,9 @@ public class Avion implements Serializable {
     }
 
     public void setCapacidad(Integer capacidad) {
+        Integer oldCapacidad = this.capacidad;
         this.capacidad = capacidad;
+        changeSupport.firePropertyChange("capacidad", oldCapacidad, capacidad);
     }
 
     public String getMarca() {
@@ -76,7 +86,9 @@ public class Avion implements Serializable {
     }
 
     public void setMarca(String marca) {
+        String oldMarca = this.marca;
         this.marca = marca;
+        changeSupport.firePropertyChange("marca", oldMarca, marca);
     }
 
     public String getModelo() {
@@ -84,7 +96,9 @@ public class Avion implements Serializable {
     }
 
     public void setModelo(String modelo) {
+        String oldModelo = this.modelo;
         this.modelo = modelo;
+        changeSupport.firePropertyChange("modelo", oldModelo, modelo);
     }
 
     public List<Vuelo> getVueloList() {
@@ -100,7 +114,9 @@ public class Avion implements Serializable {
     }
 
     public void setIdAerolinea(Aerolinea idAerolinea) {
+        Aerolinea oldIdAerolinea = this.idAerolinea;
         this.idAerolinea = idAerolinea;
+        changeSupport.firePropertyChange("idAerolinea", oldIdAerolinea, idAerolinea);
     }
 
     @Override
@@ -130,6 +146,14 @@ public class Avion implements Serializable {
 
     public String toStringId() {
         return idAvion.toString();
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

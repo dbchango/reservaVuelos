@@ -84,7 +84,6 @@ public class FormBusqueda extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         claseVueloIV = new javax.swing.JComboBox<>();
-        BuscarIsaVuelta = new javax.swing.JButton();
         kButton4 = new keeptoo.KButton();
         jPanel1 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
@@ -447,14 +446,6 @@ public class FormBusqueda extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        BuscarIsaVuelta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-search-16.png"))); // NOI18N
-        BuscarIsaVuelta.setText("Buscar");
-        BuscarIsaVuelta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarIsaVueltaActionPerformed(evt);
-            }
-        });
-
         kButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-search-16.png"))); // NOI18N
         kButton4.setText("Buscar");
         kButton4.setkEndColor(new java.awt.Color(140, 126, 242));
@@ -479,7 +470,6 @@ public class FormBusqueda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuscarIsaVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(520, Short.MAX_VALUE))
         );
@@ -492,9 +482,7 @@ public class FormBusqueda extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(BuscarIsaVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -809,28 +797,13 @@ public class FormBusqueda extends javax.swing.JFrame {
             fechaida = fechaSoloIDa.getCalendar().getTime();
             origen = origenSoloIda.getText();
             destino = destinoSoloIda.getText();
-            System.out.println(new Date(1999, 12, 12));
+
             new resultadosIda(origen, destino, fechaida, nAdultos, nMenores).setVisible(true);
             this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }//GEN-LAST:event_kButton3ActionPerformed
-
-    private void BuscarIsaVueltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIsaVueltaActionPerformed
-        try{
-            nAdultos = numAdultosIV.getValue();
-            nMenores = numMenoresIV.getValue();
-            fechaida = fechaIdaIV.getCalendar().getTime();
-            fechaRetorno = fechaVueltaIV.getCalendar().getTime();
-            origen = origenIdaIV.getText();
-            destino = destinoIdaIIV.getText();
-            new IdaVueltaResultados(origen, destino, fechaida, nAdultos, nMenores, fechaRetorno).setVisible(true);
-            this.dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }//GEN-LAST:event_BuscarIsaVueltaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -882,7 +855,6 @@ public class FormBusqueda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BuscarIsaVuelta;
     private javax.swing.JButton BuscarMultidestino;
     private javax.swing.JTabbedPane ReservaOptions;
     private javax.swing.JComboBox<String> claseVueloI;
@@ -899,8 +871,6 @@ public class FormBusqueda extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser fechaSoloIDa;
     private com.toedter.calendar.JDateChooser fechaVueltaIV;
     private com.toedter.calendar.JDateChooser fechaVueltaMulti;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -910,7 +880,6 @@ public class FormBusqueda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -934,12 +903,10 @@ public class FormBusqueda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private keeptoo.KButton kButton1;
     private keeptoo.KButton kButton2;
     private keeptoo.KButton kButton3;
     private keeptoo.KButton kButton4;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private keeptoo.KGradientPanel kGradientPanel2;
     private keeptoo.KGradientPanel kGradientPanel3;
     private keeptoo.KGradientPanel kGradientPanel4;
     private com.toedter.components.JSpinField numAdultosI;

@@ -5,6 +5,8 @@
  */
 package proyecto.entidades;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -17,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -27,6 +30,9 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Aeropuerto.findAll", query = "SELECT a FROM Aeropuerto a")})
 public class Aeropuerto implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,7 +63,9 @@ public class Aeropuerto implements Serializable {
     }
 
     public void setIdAeropuerto(Integer idAeropuerto) {
+        Integer oldIdAeropuerto = this.idAeropuerto;
         this.idAeropuerto = idAeropuerto;
+        changeSupport.firePropertyChange("idAeropuerto", oldIdAeropuerto, idAeropuerto);
     }
 
     public String getNombreAeropuerto() {
@@ -65,7 +73,9 @@ public class Aeropuerto implements Serializable {
     }
 
     public void setNombreAeropuerto(String nombreAeropuerto) {
+        String oldNombreAeropuerto = this.nombreAeropuerto;
         this.nombreAeropuerto = nombreAeropuerto;
+        changeSupport.firePropertyChange("nombreAeropuerto", oldNombreAeropuerto, nombreAeropuerto);
     }
 
     public String getPaginaweb() {
@@ -73,7 +83,9 @@ public class Aeropuerto implements Serializable {
     }
 
     public void setPaginaweb(String paginaweb) {
+        String oldPaginaweb = this.paginaweb;
         this.paginaweb = paginaweb;
+        changeSupport.firePropertyChange("paginaweb", oldPaginaweb, paginaweb);
     }
 
     public String getCiudad() {
@@ -81,7 +93,9 @@ public class Aeropuerto implements Serializable {
     }
 
     public void setCiudad(String ciudad) {
+        String oldCiudad = this.ciudad;
         this.ciudad = ciudad;
+        changeSupport.firePropertyChange("ciudad", oldCiudad, ciudad);
     }
 
     public String getPais() {
@@ -89,7 +103,9 @@ public class Aeropuerto implements Serializable {
     }
 
     public void setPais(String pais) {
+        String oldPais = this.pais;
         this.pais = pais;
+        changeSupport.firePropertyChange("pais", oldPais, pais);
     }
 
     public List<RefAeropuert> getRefAeropuertList() {
@@ -123,6 +139,14 @@ public class Aeropuerto implements Serializable {
     @Override
     public String toString() {
         return "proyecto.entidades.Aeropuerto[ idAeropuerto=" + idAeropuerto + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

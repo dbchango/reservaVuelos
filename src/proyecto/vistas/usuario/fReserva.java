@@ -275,7 +275,7 @@ public class fReserva extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tipoDeDocumentoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addComponent(tipoDeDocumentoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -311,14 +311,13 @@ public class fReserva extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13)
                                     .addComponent(fechaRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(fechaIda, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,12 +334,15 @@ public class fReserva extends javax.swing.JFrame {
         jLabel7.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel7.setMaximumSize(new java.awt.Dimension(39, 14));
 
+        numeroTarjeta.setEditable(false);
         numeroTarjeta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         numeroTarjeta.setOpaque(false);
 
+        nombreTitular.setEditable(false);
         nombreTitular.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         nombreTitular.setOpaque(false);
 
+        fechaVencTarjeta.setEditable(false);
         fechaVencTarjeta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         fechaVencTarjeta.setOpaque(false);
 
@@ -352,6 +354,7 @@ public class fReserva extends javax.swing.JFrame {
 
         jLabel18.setText("Código de seguridad");
 
+        codigoSeguridadTarjeta.setEditable(false);
         codigoSeguridadTarjeta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         codigoSeguridadTarjeta.setOpaque(false);
         codigoSeguridadTarjeta.addActionListener(new java.awt.event.ActionListener() {
@@ -360,6 +363,7 @@ public class fReserva extends javax.swing.JFrame {
             }
         });
 
+        documentoTitularTarjeta.setEditable(false);
         documentoTitularTarjeta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         documentoTitularTarjeta.setOpaque(false);
         documentoTitularTarjeta.addActionListener(new java.awt.event.ActionListener() {
@@ -599,9 +603,9 @@ public class fReserva extends javax.swing.JFrame {
 
         kGradientPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 57, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("Reservación de vuelos");
+        jLabel28.setText("Reserva");
         jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel28.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel28.setMaximumSize(new java.awt.Dimension(39, 14));
@@ -759,6 +763,10 @@ public class fReserva extends javax.swing.JFrame {
             System.out.println(ex.toString());
         }finally{
             numeroTarjeta.setEditable(true);
+            nombreTitular.setEditable(true);
+            documentoTitularTarjeta.setEditable(true);
+            fechaVencTarjeta.setEditable(true);
+            codigoSeguridadTarjeta.setEditable(true);
         }
     }//GEN-LAST:event_kButton2ActionPerformed
 
