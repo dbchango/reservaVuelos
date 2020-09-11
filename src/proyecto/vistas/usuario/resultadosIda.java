@@ -33,17 +33,19 @@ public class resultadosIda extends javax.swing.JFrame {
     private static DefaultTableModel modeloResultados;
     private static VueloJpaController vuelosControl= new VueloJpaController(); 
     private static double totalPago;
+    private static String claseVuelo;
     /**
      * Creates new form resultadosIda
      */
-    public resultadosIda(String origen, String destino, Date fechaIda, int nAdultos, int nMenores) {
+    public resultadosIda(String origen, String destino, Date fechaIda, int nAdultos, int nMenores, String claseVuelo) {
         initComponents();
         this.origen = origen;
         this.destino = destino;
         this.fechaIda = fechaIda;
         this.nAdultos = nAdultos;
         this.nMenores = nMenores;
-
+        this.claseVuelo = claseVuelo;
+        System.out.println(claseVuelo);
         System.out.println(""+this.origen+" "+this.destino+" "+this.fechaIda+" "+this.nAdultos+" "+this.nMenores);
            listarResultados(this.origen, this.destino, this.fechaIda,this.nAdultos+this.nMenores);
     }
@@ -269,7 +271,7 @@ public class resultadosIda extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println(idVueloSelected);
         int[] vuelos = {idVueloSelected}; 
-        new proyecto.vistas.usuario.fReserva(vuelos, "Solo Ida", totalPago).setVisible(true);
+        new proyecto.vistas.usuario.fReserva(vuelos, "Solo Ida", totalPago, nAdultos+nMenores).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_kButton2ActionPerformed
 
@@ -303,7 +305,7 @@ public class resultadosIda extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new resultadosIda("Quito", "Madrid", new GregorianCalendar(3920, 10, 10).getTime(), 1, 1).setVisible(true);
+                new resultadosIda("Quito", "s", new GregorianCalendar(3920, 10, 10).getTime(), 1, 1, "Económica").setVisible(true);
             }
         });
     }
@@ -317,6 +319,10 @@ public class resultadosIda extends javax.swing.JFrame {
             
             Query query = em.createNativeQuery("SELECT * FROM VISTA_VUELOS AS V WHERE V.ORIGEN='"+origen+"' AND v.destino='"+destino+"' AND v.FECHA='"+fechaQ+"' AND v.VACANTES>"+pasajeros+"", VistaVuelos.class);
             List<VistaVuelos> vuelos = query.getResultList();
+            if(vuelos.size()<1){
+                JOptionPane.showMessageDialog(null, "No se han encontrado vuelos en el sistema para los datos especificados, vuelva a la ventana de busqueda y realice otra busqueda");
+                return;
+            }
             for (VistaVuelos vuelo : vuelos) {
                 System.out.println(vuelo.getOrigen());
             }

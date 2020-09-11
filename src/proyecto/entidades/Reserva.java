@@ -47,6 +47,10 @@ public class Reserva implements Serializable {
     private Date fechaRegistro;
     @Column(name = "TIPO")
     private String tipo;
+    @Column(name = "NUMERO_PASAJEROS")
+    private Integer numeroPasajeros;
+
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "TOTAL")
     private BigDecimal total;
@@ -137,6 +141,14 @@ public class Reserva implements Serializable {
 
     public void setPasajeroList(List<Pasajero> pasajeroList) {
         this.pasajeroList = pasajeroList;
+    }
+    
+    public Integer getNumeroPasajeros() {
+        return numeroPasajeros;
+    }
+
+    public void setNumeroPasajeros(Integer numeroPasajeros) {
+        this.numeroPasajeros = numeroPasajeros;
     }
 
     @Override

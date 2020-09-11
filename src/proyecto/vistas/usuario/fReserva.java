@@ -46,18 +46,20 @@ public class fReserva extends javax.swing.JFrame {
     private static ItinerarioJpaController itenarariosController = new ItinerarioJpaController();
     private static UsuarioJpaController usuariosController = new UsuarioJpaController();
     private static PagoJpaController pagosController = new PagoJpaController();
-
+    private static int nPasajeros;
     private static Date currentDate = new GregorianCalendar().getTime();
     private static double totalPago;
     private static DefaultTableModel modelVuelos;
     /**
      * Creates new form fReserva
      */
-    public fReserva(int idVuelos[], String tipoReserva, double total) {
+    public fReserva(int idVuelos[], String tipoReserva, double total, int nPasajeros) {
         initComponents();
         this.idVuelos=idVuelos;
         this.tipoReserva = tipoReserva;
         this.totalPago = total;
+        this.nPasajeros = nPasajeros;
+        System.out.println("Tipo reserva"+this.tipoReserva+"Total pago "+this.totalPago+"Numero de pasajeros "+this.nPasajeros);
     }
 
     /**
@@ -93,7 +95,7 @@ public class fReserva extends javax.swing.JFrame {
         fechaRetorno = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        totalReserva = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         numeroTarjeta = new javax.swing.JTextField();
@@ -213,7 +215,7 @@ public class fReserva extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Total");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        totalReserva.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -223,7 +225,7 @@ public class fReserva extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(totalReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +322,7 @@ public class fReserva extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(totalReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
 
@@ -733,9 +735,9 @@ public class fReserva extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             fechasVuelos();
-             EntityManagerFactory emf = Persistence.createEntityManagerFactory("Proyecto_DespegarPU");
+            totalReserva.setText(totalPago+"");
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("Proyecto_DespegarPU");
             EntityManager em = emf.createEntityManager();
-            
             Usuario usuario = new Usuario();
             Reserva reserva = new Reserva();
             //creacion del usuario
@@ -745,9 +747,13 @@ public class fReserva extends javax.swing.JFrame {
             usuario.setTelefono(telefonoUsuario.getText());
             usuario.setTipoDocumento(tipoDeDocumentoUsuario.getSelectedItem().toString());
             usuario.setEmail(emailUsuario.getText());
-            reserva.setEstado("Creador");
+            //Creacion de la reserva
+            reserva.setEstado("Creado");
+            reserva.setNumeroPasajeros(PROPERTIES);
             reserva.setFechaRegistro(new GregorianCalendar().getTime());
             reserva.setTipo(tipoReserva);
+            reserva.setNumeroPasajeros(nPasajeros);
+            System.out.println(reserva.getNumeroPasajeros());
             reserva.setTotal(BigDecimal.valueOf(totalPago));
             em.getTransaction().begin();
             em.persist(usuario);
@@ -840,7 +846,7 @@ public class fReserva extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 int a[] = {1};
-                new fReserva(a, "Solo Ida", 45.5).setVisible(true);
+                new fReserva(a, "Solo Ida", 45.5, 5).setVisible(true);
             }
         });
     }
@@ -933,7 +939,6 @@ public class fReserva extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -972,5 +977,6 @@ public class fReserva extends javax.swing.JFrame {
     private javax.swing.JTextField telefonoUsuario;
     private javax.swing.JComboBox<String> tipoDeDocumentoUsuario;
     private javax.swing.JComboBox<String> tipoDocumentoPasajero;
+    private javax.swing.JLabel totalReserva;
     // End of variables declaration//GEN-END:variables
 }

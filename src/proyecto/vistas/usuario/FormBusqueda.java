@@ -539,6 +539,7 @@ public class FormBusqueda extends javax.swing.JFrame {
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
         // TODO add your handling code here:
         try{
+            String claseVuelo  = claseVueloIV.getSelectedItem().toString();
             nAdultos = numAdultosIV.getValue();
             nMenores = numMenoresIV.getValue();
             fechaida = fechaIdaIV.getCalendar().getTime();
@@ -546,7 +547,7 @@ public class FormBusqueda extends javax.swing.JFrame {
             origen = origenIdaIV.getText();
             destino = destinoIdaIIV.getText();
             System.out.println(origen + " " + destino);
-            new IdaVueltaResultados(origen, destino, fechaida, nAdultos, nMenores, fechaRetorno).setVisible(true);
+            new IdaVueltaResultados(origen, destino, fechaida, nAdultos, nMenores, fechaRetorno, claseVuelo).setVisible(true);
             this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString());
@@ -556,13 +557,14 @@ public class FormBusqueda extends javax.swing.JFrame {
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
         // TODO add your handling code here:
         try{
+            String claseVuelo = claseVueloI.getSelectedItem().toString();
             nAdultos = numAdultosI.getValue();
             nMenores = numMenoresI.getValue();
             fechaida = fechaSoloIDa.getCalendar().getTime();
             origen = origenSoloIda.getText();
             destino = destinoSoloIda.getText();
 
-            new resultadosIda(origen, destino, fechaida, nAdultos, nMenores).setVisible(true);
+            new resultadosIda(origen, destino, fechaida, nAdultos, nMenores, claseVuelo).setVisible(true);
             this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString());

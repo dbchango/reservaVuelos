@@ -37,20 +37,23 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
     private static int idVueloIdaSelected;
     private static int idVueloRetornoSelected;
     private static double totalPago;
+    private static String claseVuelo;
     
     /**
      * Creates new form IdaVuelta
      */
-    public IdaVueltaResultados(String origen, String destino, Date fechaIda, int nAdultos, int nMenores, Date fechaRetorno) {
+    public IdaVueltaResultados(String origen, String destino, Date fechaIda, int nAdultos, int nMenores, Date fechaRetorno, String claseVuelo) {
         this.origen = origen;
         this.destino = destino;
         this.fechaIda = fechaIda;
         this.nAdultos = nAdultos;
         this.nMenores = nMenores;
         this.fechaRetorno = fechaRetorno;
+        this.claseVuelo = claseVuelo;
         initComponents();
         listarResultadosIda(this.origen, this.destino, this.fechaIda,this.nAdultos+this.nMenores);
         listarResultadosRetorno(this.destino, this.origen, this.fechaRetorno,this.nAdultos+this.nMenores);
+        System.out.println(claseVuelo);
     }
 
     /**
@@ -383,6 +386,18 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
         totalMenores = Double.parseDouble(ModeloVuelosIda.getValueAt(row, 5).toString())*nMenores*0.5;
         totalMayores = Double.parseDouble(ModeloVuelosIda.getValueAt(row, 5).toString())*nAdultos;
         total = totalMenores+totalMayores;
+        if(claseVuelo=="Económica"){
+            total = total;
+        }
+        if(claseVuelo=="Premium economy"){
+            total = total + total*0.2;
+        }
+        if(claseVuelo=="Ejecutiva/Busines"){
+            total = total + total*0.5;
+        }
+        if(claseVuelo=="Primera clase"){
+            total = total*0.7+total;
+        }
         idVueloIda.setText(ModeloVuelosIda.getValueAt(row, 0).toString());
         origenIda.setText(ModeloVuelosIda.getValueAt(row, 3).toString());
         destinoIda.setText(ModeloVuelosIda.getValueAt(row, 4).toString());
@@ -405,6 +420,18 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
         double totalMenores = Double.parseDouble(ModeloVuelosRegreso.getValueAt(row, 5).toString())*nMenores*0.5;
         double totalMayores = Double.parseDouble(ModeloVuelosRegreso.getValueAt(row, 5).toString())*nAdultos;
         totalRetorno = totalMayores+totalMenores;
+        if(claseVuelo=="Económica"){
+            totalRetorno = totalRetorno;
+        }
+        if(claseVuelo=="Premium economy"){
+            totalRetorno = totalRetorno + totalRetorno*0.2;
+        }
+        if(claseVuelo=="Ejecutiva/Busines"){
+            totalRetorno = totalRetorno + totalRetorno*0.5;
+        }
+        if(claseVuelo=="Primera clase"){
+            totalRetorno = totalRetorno*0.7+totalRetorno;
+        }
         idVueloRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 0).toString());
         origenRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 3).toString());
         destinoRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 4).toString());
@@ -423,7 +450,7 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
         // TODO add your handling code here:
         totalPago = Double.parseDouble(totalSeleccion.getText());
         int[] vuelos = {idVueloIdaSelected, idVueloRetornoSelected};
-        new fReserva(vuelos, "Ida y vuelta", totalPago).setVisible(true);
+        new fReserva(vuelos, "Ida y vuelta", totalPago, nAdultos+nMenores).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_kButton1ActionPerformed
 
@@ -466,7 +493,7 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IdaVueltaResultados("Quito", "Madrid", new GregorianCalendar(3920, 10, 10).getTime(), 1, 1, new GregorianCalendar(3920, 10, 12).getTime()).setVisible(true);
+                new IdaVueltaResultados("Quito", "s", new GregorianCalendar(3920, 10, 10).getTime(), 1, 1, new GregorianCalendar(3920, 10, 12).getTime(), "Primera clase").setVisible(true);
             }
         });
     }
@@ -482,8 +509,13 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
             
             Query query = em.createNativeQuery("SELECT * FROM VISTA_VUELOS AS V WHERE V.ORIGEN='"+origen+"' AND v.destino='"+destino+"' AND v.FECHA='"+fechaQ+"' AND v.VACANTES>"+pasajeros+"", VistaVuelos.class);
             List<VistaVuelos> vuelos = query.getResultList();
+            if(vuelos.size()<1){
+                JOptionPane.showMessageDialog(null, "No se han encontrado vuelos en el sistema para los datos especificados, vuelva a la ventana de busqueda y realice otra busqueda");
+                return;
+            }
             
             String[] tableTitles = {"ID VUELO", "FECHA", "VACANTES","ORIGEN", "DESTINO", "PRECIO", "VACANTES", "AEROLINEA","ID AVION","MODELO"};
+            
             ModeloVuelosIda = new DefaultTableModel(null, tableTitles);
             String[] vuelo;
             vuelo = new String[10];
