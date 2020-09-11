@@ -287,7 +287,8 @@ public class GestionAeropuertos extends JPanel {
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
-       
+        new GestionMain().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_regresarActionPerformed
 
 

@@ -115,6 +115,7 @@ public class GestionAerolinea extends JPanel {
         jLabel7.setText("Gestión de Aerolíenas");
 
         regresar.setText("Regresar");
+        regresar.addActionListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -204,6 +205,9 @@ public class GestionAerolinea extends JPanel {
             else if (evt.getSource() == deleteButton) {
                 GestionAerolinea.this.deleteButtonActionPerformed(evt);
             }
+            else if (evt.getSource() == regresar) {
+                GestionAerolinea.this.regresarActionPerformed(evt);
+            }
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,6 +259,12 @@ public class GestionAerolinea extends JPanel {
             list.addAll(merged);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        // TODO add your handling code here:
+        new GestionMain().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_regresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

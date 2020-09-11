@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.JOptionPane;
+import proyecto.vistas.MainWindow;
 
 /**
  *
@@ -63,6 +64,7 @@ public class FormBusqueda extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         claseVueloI = new javax.swing.JComboBox<>();
         kButton3 = new keeptoo.KButton();
+        kButton2 = new keeptoo.KButton();
         jPanel3 = new javax.swing.JPanel();
         kGradientPanel3 = new keeptoo.KGradientPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -85,29 +87,7 @@ public class FormBusqueda extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         claseVueloIV = new javax.swing.JComboBox<>();
         kButton4 = new keeptoo.KButton();
-        jPanel1 = new javax.swing.JPanel();
-        kGradientPanel1 = new keeptoo.KGradientPanel();
-        jPanel8 = new javax.swing.JPanel();
-        destinoIdaMulti = new javax.swing.JTextField();
-        destinoIVlbl4 = new javax.swing.JLabel();
-        origenIdaMulti = new javax.swing.JTextField();
-        origenIVLbl4 = new javax.swing.JLabel();
-        fechaIdaMulti = new com.toedter.calendar.JDateChooser();
-        jLabel26 = new javax.swing.JLabel();
-        fechaVueltaMulti = new com.toedter.calendar.JDateChooser();
-        jLabel20 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        numAdultosMulti = new com.toedter.components.JSpinField();
-        numMenoresMulti = new com.toedter.components.JSpinField();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        claseVueloMulti = new javax.swing.JComboBox<>();
-        BuscarMultidestino = new javax.swing.JButton();
-        kButton2 = new keeptoo.KButton();
+        kButton5 = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -257,13 +237,28 @@ public class FormBusqueda extends javax.swing.JFrame {
             }
         });
 
+        kButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-back-arrow-16.png"))); // NOI18N
+        kButton2.setText("Regresar");
+        kButton2.setkEndColor(new java.awt.Color(140, 126, 242));
+        kButton2.setkHoverEndColor(new java.awt.Color(204, 204, 255));
+        kButton2.setkHoverForeGround(new java.awt.Color(204, 204, 255));
+        kButton2.setkHoverStartColor(new java.awt.Color(170, 61, 250));
+        kButton2.setkStartColor(new java.awt.Color(204, 176, 252));
+        kButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel4Layout = new javax.swing.GroupLayout(kGradientPanel4);
         kGradientPanel4.setLayout(kGradientPanel4Layout);
         kGradientPanel4Layout.setHorizontalGroup(
             kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +270,9 @@ public class FormBusqueda extends javax.swing.JFrame {
             kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -459,13 +456,28 @@ public class FormBusqueda extends javax.swing.JFrame {
             }
         });
 
+        kButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-back-arrow-16.png"))); // NOI18N
+        kButton5.setText("Regresar");
+        kButton5.setkEndColor(new java.awt.Color(140, 126, 242));
+        kButton5.setkHoverEndColor(new java.awt.Color(204, 204, 255));
+        kButton5.setkHoverForeGround(new java.awt.Color(204, 204, 255));
+        kButton5.setkHoverStartColor(new java.awt.Color(170, 61, 250));
+        kButton5.setkStartColor(new java.awt.Color(204, 176, 252));
+        kButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel3Layout = new javax.swing.GroupLayout(kGradientPanel3);
         kGradientPanel3.setLayout(kGradientPanel3Layout);
         kGradientPanel3Layout.setHorizontalGroup(
             kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(kGradientPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,7 +489,9 @@ public class FormBusqueda extends javax.swing.JFrame {
             kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -497,223 +511,6 @@ public class FormBusqueda extends javax.swing.JFrame {
         );
 
         ReservaOptions.addTab("Ida y vuelta", jPanel3);
-
-        jPanel1.setBackground(new java.awt.Color(226, 251, 252));
-
-        kGradientPanel1.setkEndColor(new java.awt.Color(123, 123, 255));
-        kGradientPanel1.setkStartColor(new java.awt.Color(253, 166, 253));
-
-        jPanel8.setBackground(new java.awt.Color(243, 252, 253));
-        jPanel8.setOpaque(false);
-
-        destinoIdaMulti.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        destinoIdaMulti.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        destinoIdaMulti.setOpaque(false);
-        destinoIdaMulti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                destinoIdaMultiActionPerformed(evt);
-            }
-        });
-
-        destinoIVlbl4.setText("Destino");
-
-        origenIdaMulti.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        origenIdaMulti.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        origenIdaMulti.setOpaque(false);
-
-        origenIVLbl4.setText("Origen");
-
-        fechaIdaMulti.setOpaque(false);
-
-        jLabel26.setText("Fecha ida");
-
-        jLabel20.setText("Fecha vuelta");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addGap(175, 175, 175)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechaVueltaMulti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fechaIdaMulti, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(origenIdaMulti, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(origenIVLbl4, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(destinoIdaMulti)
-                            .addComponent(destinoIVlbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(origenIVLbl4)
-                    .addComponent(destinoIVlbl4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(origenIdaMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(destinoIdaMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaIdaMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaVueltaMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        jPanel11.setBackground(new java.awt.Color(226, 251, 252));
-        jPanel11.setOpaque(false);
-
-        jLabel27.setText("Pasajeros y clase");
-
-        numAdultosMulti.setOpaque(false);
-
-        numMenoresMulti.setOpaque(false);
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel28.setText("Adulto");
-
-        jLabel29.setText("Desde 10 años");
-
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel30.setText("Menores");
-
-        jLabel31.setText("Hasta 17 años");
-
-        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel38.setText("Clase");
-
-        claseVueloMulti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        claseVueloMulti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Económica", "Premium economy", "Ejecutiva/Busines", "Primera clase" }));
-        claseVueloMulti.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel28)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel30)
-                            .addComponent(jLabel31))
-                        .addGap(176, 176, 176)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(claseVueloMulti, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numMenoresMulti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numAdultosMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel38))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel27)
-                .addGap(12, 12, 12)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29))
-                    .addComponent(numAdultosMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel31))
-                    .addComponent(numMenoresMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel38)
-                    .addComponent(claseVueloMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        BuscarMultidestino.setBackground(new java.awt.Color(162, 244, 131));
-        BuscarMultidestino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-search-16.png"))); // NOI18N
-        BuscarMultidestino.setText("Buscar");
-        BuscarMultidestino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarMultidestinoActionPerformed(evt);
-            }
-        });
-
-        kButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-search-16.png"))); // NOI18N
-        kButton2.setText("Buscar");
-        kButton2.setkEndColor(new java.awt.Color(140, 126, 242));
-        kButton2.setkHoverEndColor(new java.awt.Color(204, 204, 255));
-        kButton2.setkHoverForeGround(new java.awt.Color(204, 204, 255));
-        kButton2.setkHoverStartColor(new java.awt.Color(170, 61, 250));
-        kButton2.setkStartColor(new java.awt.Color(204, 176, 252));
-        kButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BuscarMultidestino, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 520, Short.MAX_VALUE))
-        );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BuscarMultidestino, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
-        );
-
-        ReservaOptions.addTab("Multidestino", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -738,39 +535,6 @@ public class FormBusqueda extends javax.swing.JFrame {
     private void destinoIdaIIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinoIdaIIVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_destinoIdaIIVActionPerformed
-
-    private void BuscarMultidestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarMultidestinoActionPerformed
-        // TODO add your handling code here:
-        try{
-            nAdultos = numAdultosMulti.getValue();
-            nMenores = numMenoresMulti.getValue();
-            fechaida = fechaIdaMulti.getCalendar().getTime();
-            origen = origenIdaMulti.getText();
-            destino = destinoIdaMulti.getText();
-            new resultadosIda(origen, destino, fechaida, nAdultos, nMenores).setVisible(true);
-            this.dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }//GEN-LAST:event_BuscarMultidestinoActionPerformed
-
-    private void destinoIdaMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinoIdaMultiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_destinoIdaMultiActionPerformed
-
-    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
-        try{
-            nAdultos = numAdultosMulti.getValue();
-            nMenores = numMenoresMulti.getValue();
-            fechaida = fechaIdaMulti.getCalendar().getTime();
-            origen = origenIdaMulti.getText();
-            destino = destinoIdaMulti.getText();
-            new resultadosIda(origen, destino, fechaida, nAdultos, nMenores).setVisible(true);
-            this.dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }//GEN-LAST:event_kButton2ActionPerformed
 
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
         // TODO add your handling code here:
@@ -804,6 +568,18 @@ public class FormBusqueda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }//GEN-LAST:event_kButton3ActionPerformed
+
+    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+        // TODO add your handling code here:
+        new MainWindow().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton2ActionPerformed
+
+    private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
+        // TODO add your handling code here:
+        new MainWindow().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -855,22 +631,16 @@ public class FormBusqueda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BuscarMultidestino;
     private javax.swing.JTabbedPane ReservaOptions;
     private javax.swing.JComboBox<String> claseVueloI;
     private javax.swing.JComboBox<String> claseVueloIV;
-    private javax.swing.JComboBox<String> claseVueloMulti;
     private javax.swing.JLabel destinoIVlbl1;
     private javax.swing.JLabel destinoIVlbl3;
-    private javax.swing.JLabel destinoIVlbl4;
     private javax.swing.JTextField destinoIdaIIV;
-    private javax.swing.JTextField destinoIdaMulti;
     private javax.swing.JTextField destinoSoloIda;
     private com.toedter.calendar.JDateChooser fechaIdaIV;
-    private com.toedter.calendar.JDateChooser fechaIdaMulti;
     private com.toedter.calendar.JDateChooser fechaSoloIDa;
     private com.toedter.calendar.JDateChooser fechaVueltaIV;
-    private com.toedter.calendar.JDateChooser fechaVueltaMulti;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -880,46 +650,31 @@ public class FormBusqueda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private keeptoo.KButton kButton2;
     private keeptoo.KButton kButton3;
     private keeptoo.KButton kButton4;
-    private keeptoo.KGradientPanel kGradientPanel1;
+    private keeptoo.KButton kButton5;
     private keeptoo.KGradientPanel kGradientPanel3;
     private keeptoo.KGradientPanel kGradientPanel4;
     private com.toedter.components.JSpinField numAdultosI;
     private com.toedter.components.JSpinField numAdultosIV;
-    private com.toedter.components.JSpinField numAdultosMulti;
     private com.toedter.components.JSpinField numMenoresI;
     private com.toedter.components.JSpinField numMenoresIV;
-    private com.toedter.components.JSpinField numMenoresMulti;
     private javax.swing.JLabel origenIVLbl1;
     private javax.swing.JLabel origenIVLbl3;
-    private javax.swing.JLabel origenIVLbl4;
     private javax.swing.JTextField origenIdaIV;
-    private javax.swing.JTextField origenIdaMulti;
     private javax.swing.JTextField origenSoloIda;
     // End of variables declaration//GEN-END:variables
 }

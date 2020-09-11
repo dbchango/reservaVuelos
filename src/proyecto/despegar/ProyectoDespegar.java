@@ -5,8 +5,8 @@
  */
 package proyecto.despegar;
 
+import proyecto.vistas.MainWindow;
 import proyecto.vistas.usuario.FormBusqueda;
-import proyecto.vistas.usuario.VentanaPrincipal;
 
 /**
  *
@@ -18,7 +18,7 @@ public class ProyectoDespegar {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new VentanaPrincipal().setVisible(true);
+        new MainWindow().setVisible(true);
     }
     
 }

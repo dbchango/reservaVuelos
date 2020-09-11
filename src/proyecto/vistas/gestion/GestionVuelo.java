@@ -182,7 +182,7 @@ public class GestionVuelo extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Seleccione los aeropuertos de origen y destino");
 
-        registrarAeropuerto.setText("Registrar");
+        registrarAeropuerto.setText("Agregar");
         registrarAeropuerto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarAeropuertoActionPerformed(evt);
@@ -235,7 +235,7 @@ public class GestionVuelo extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Aviones Registrados");
+        jLabel15.setText("Seleccione un avión");
 
         listaAeropuertos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

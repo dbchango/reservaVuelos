@@ -800,7 +800,7 @@ public class fReserva extends javax.swing.JFrame {
 
     private void kButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton8ActionPerformed
         // TODO add your handling code here:
-        new VentanaPrincipal().setVisible(true);
+        new FormBusqueda().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_kButton8ActionPerformed
 
