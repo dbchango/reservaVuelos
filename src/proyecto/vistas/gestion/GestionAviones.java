@@ -86,10 +86,10 @@ public class GestionAviones extends JPanel {
 
         idAerolineaLabel.setText("Id Aerolinea:");
 
-        saveButton.setText("Save");
+        saveButton.setText("Guardar");
         saveButton.addActionListener(formListener);
 
-        newButton.setText("New");
+        newButton.setText("Nuevo");
         newButton.addActionListener(formListener);
 
         listaAerolineas.setModel(new javax.swing.table.DefaultTableModel(
@@ -131,7 +131,7 @@ public class GestionAviones extends JPanel {
 
         idAvionField.setEditable(false);
 
-        deleteButton1.setText("Delete");
+        deleteButton1.setText("Eliminar");
         deleteButton1.addActionListener(formListener);
 
         regresar.setText("Regresar");
@@ -270,7 +270,8 @@ public class GestionAviones extends JPanel {
     }//GEN-LAST:event_newButtonActionPerformed
     
     private void listarAerolineas(){    
-        List<Aerolinea> aerolineas = aerolineasController.findAerolineaEntities();
+        try{
+            List<Aerolinea> aerolineas = aerolineasController.findAerolineaEntities();
         String[] titles = {"ID AEROLINEA", "NOMBRE", "PÁGINA WEB"};
         aerolineasModel = new DefaultTableModel(null, titles);
         String[] aerolinea;
@@ -282,6 +283,9 @@ public class GestionAviones extends JPanel {
             aerolineasModel.addRow(aerolinea);
         }
         listaAerolineas.setModel(aerolineasModel);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
                 
     }
     
@@ -390,31 +394,8 @@ public class GestionAviones extends JPanel {
     private javax.swing.JButton regresar;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionAviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionAviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionAviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionAviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    /*public static void main(String[] args) {
 
-        /* Create and display the form */
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
@@ -424,6 +405,6 @@ public class GestionAviones extends JPanel {
                 frame.setVisible(true);
             }
         });
-    }
+    }*/
     
 }

@@ -379,71 +379,80 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
 
     private void opcionesIdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcionesIdaMouseClicked
         // TODO add your handling code here:
-        int row = opcionesIda.getSelectedRow();
-        double total;
-        double totalMenores;
-        double totalMayores;
-        totalMenores = Double.parseDouble(ModeloVuelosIda.getValueAt(row, 5).toString())*nMenores*0.5;
-        totalMayores = Double.parseDouble(ModeloVuelosIda.getValueAt(row, 5).toString())*nAdultos;
-        total = totalMenores+totalMayores;
-        if(claseVuelo=="Económica"){
-            total = total;
-        }
-        if(claseVuelo=="Premium economy"){
-            total = total + total*0.2;
-        }
-        if(claseVuelo=="Ejecutiva/Busines"){
-            total = total + total*0.5;
-        }
-        if(claseVuelo=="Primera clase"){
-            total = total*0.7+total;
-        }
-        idVueloIda.setText(ModeloVuelosIda.getValueAt(row, 0).toString());
-        origenIda.setText(ModeloVuelosIda.getValueAt(row, 3).toString());
-        destinoIda.setText(ModeloVuelosIda.getValueAt(row, 4).toString());
-        precioIda.setText(String.valueOf(total));
-        idVueloIdaSelected = Integer.parseInt(ModeloVuelosIda.getValueAt(row, 0).toString());
-        if(precioRetorno.getText()==""){
-            totalSeleccion.setText(String.valueOf(total));
-            System.out.println(total);
-        }else if(precioRetorno.getText()!=""){
-            double totalCalculado;
-            totalCalculado = Double.parseDouble(precioRetorno.getText().toString())+Double.parseDouble(precioIda.getText().toString());
-            totalSeleccion.setText(String.valueOf(totalCalculado));
+        try {
+            int row = opcionesIda.getSelectedRow();
+            double total;
+            double totalMenores;
+            double totalMayores;
+            totalMenores = Double.parseDouble(ModeloVuelosIda.getValueAt(row, 5).toString()) * nMenores * 0.5;
+            totalMayores = Double.parseDouble(ModeloVuelosIda.getValueAt(row, 5).toString()) * nAdultos;
+            total = totalMenores + totalMayores;
+            if (claseVuelo == "Económica") {
+                total = total;
+            }
+            if (claseVuelo == "Premium economy") {
+                total = total + total * 0.2;
+            }
+            if (claseVuelo == "Ejecutiva/Busines") {
+                total = total + total * 0.5;
+            }
+            if (claseVuelo == "Primera clase") {
+                total = total * 0.7 + total;
+            }
+            idVueloIda.setText(ModeloVuelosIda.getValueAt(row, 0).toString());
+            origenIda.setText(ModeloVuelosIda.getValueAt(row, 3).toString());
+            destinoIda.setText(ModeloVuelosIda.getValueAt(row, 4).toString());
+            precioIda.setText(String.valueOf(total));
+            idVueloIdaSelected = Integer.parseInt(ModeloVuelosIda.getValueAt(row, 0).toString());
+            if (precioRetorno.getText() == "") {
+                totalSeleccion.setText(String.valueOf(total));
+                System.out.println(total);
+            } else if (precioRetorno.getText() != "") {
+                double totalCalculado;
+                totalCalculado = Double.parseDouble(precioRetorno.getText().toString()) + Double.parseDouble(precioIda.getText().toString());
+                totalSeleccion.setText(String.valueOf(totalCalculado));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
         }
         
     }//GEN-LAST:event_opcionesIdaMouseClicked
 
     private void opcionesRetornoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcionesRetornoMouseClicked
-        int row = opcionesRetorno.getSelectedRow();
-        double totalRetorno;
-        double totalMenores = Double.parseDouble(ModeloVuelosRegreso.getValueAt(row, 5).toString())*nMenores*0.5;
-        double totalMayores = Double.parseDouble(ModeloVuelosRegreso.getValueAt(row, 5).toString())*nAdultos;
-        totalRetorno = totalMayores+totalMenores;
-        if(claseVuelo=="Económica"){
-            totalRetorno = totalRetorno;
+        try {
+            int row = opcionesRetorno.getSelectedRow();
+            double totalRetorno;
+            double totalMenores = Double.parseDouble(ModeloVuelosRegreso.getValueAt(row, 5).toString()) * nMenores * 0.5;
+            double totalMayores = Double.parseDouble(ModeloVuelosRegreso.getValueAt(row, 5).toString()) * nAdultos;
+            totalRetorno = totalMayores + totalMenores;
+            if (claseVuelo == "Económica") {
+                totalRetorno = totalRetorno;
+            }
+            if (claseVuelo == "Premium economy") {
+                totalRetorno = totalRetorno + totalRetorno * 0.2;
+            }
+            if (claseVuelo == "Ejecutiva/Busines") {
+                totalRetorno = totalRetorno + totalRetorno * 0.5;
+            }
+            if (claseVuelo == "Primera clase") {
+                totalRetorno = totalRetorno * 0.7 + totalRetorno;
+            }
+            idVueloRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 0).toString());
+            origenRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 3).toString());
+            destinoRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 4).toString());
+            precioRetorno.setText(String.valueOf(totalRetorno));
+            idVueloRetornoSelected = Integer.parseInt(ModeloVuelosRegreso.getValueAt(row, 0).toString());
+            if (precioIda.getText() == "") {
+                totalSeleccion.setText(String.valueOf(totalRetorno));
+            } else if (precioIda.getText() != "") {
+                double totalCalculado;
+                totalCalculado = Double.parseDouble(precioRetorno.getText().toString()) + Double.parseDouble(precioIda.getText().toString());
+                totalSeleccion.setText(String.valueOf(totalCalculado));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
         }
-        if(claseVuelo=="Premium economy"){
-            totalRetorno = totalRetorno + totalRetorno*0.2;
-        }
-        if(claseVuelo=="Ejecutiva/Busines"){
-            totalRetorno = totalRetorno + totalRetorno*0.5;
-        }
-        if(claseVuelo=="Primera clase"){
-            totalRetorno = totalRetorno*0.7+totalRetorno;
-        }
-        idVueloRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 0).toString());
-        origenRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 3).toString());
-        destinoRetorno.setText(ModeloVuelosRegreso.getValueAt(row, 4).toString());
-        precioRetorno.setText(String.valueOf(totalRetorno));
-        idVueloRetornoSelected = Integer.parseInt(ModeloVuelosRegreso.getValueAt(row, 0).toString());
-        if(precioIda.getText()==""){
-            totalSeleccion.setText(String.valueOf(totalRetorno));
-        }else if(precioIda.getText()!=""){
-            double totalCalculado;
-            totalCalculado = Double.parseDouble(precioRetorno.getText().toString())+Double.parseDouble(precioIda.getText().toString());
-            totalSeleccion.setText(String.valueOf(totalCalculado));
-        }
+            
     }//GEN-LAST:event_opcionesRetornoMouseClicked
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
@@ -463,40 +472,14 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IdaVueltaResultados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IdaVueltaResultados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IdaVueltaResultados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IdaVueltaResultados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+/*    public static void main(String args[]) {
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IdaVueltaResultados("Quito", "s", new GregorianCalendar(3920, 10, 10).getTime(), 1, 1, new GregorianCalendar(3920, 10, 12).getTime(), "Primera clase").setVisible(true);
+                new IdaVueltaResultados("Quio", "Madrid", new GregorianCalendar(3920, 10, 10).getTime(), 1, 1, new GregorianCalendar(3920, 10, 12).getTime(), "Primera clase").setVisible(true);
             }
         });
-    }
+    }*/
     
     
     
@@ -509,7 +492,7 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
             
             Query query = em.createNativeQuery("SELECT * FROM VISTA_VUELOS AS V WHERE V.ORIGEN='"+origen+"' AND v.destino='"+destino+"' AND v.FECHA='"+fechaQ+"' AND v.VACANTES>"+pasajeros+"", VistaVuelos.class);
             List<VistaVuelos> vuelos = query.getResultList();
-            if(vuelos.size()<1){
+            if(vuelos.size()==0){
                 JOptionPane.showMessageDialog(null, "No se han encontrado vuelos en el sistema para los datos especificados, vuelva a la ventana de busqueda y realice otra busqueda");
                 return;
             }
@@ -546,11 +529,15 @@ public class IdaVueltaResultados extends javax.swing.JFrame {
             
             Query query = em.createNativeQuery("SELECT * FROM VISTA_VUELOS AS V WHERE V.ORIGEN='"+origen+"' AND v.destino='"+destino+"' AND v.FECHA='"+fechaQ+"' AND v.VACANTES>"+pasajeros+"", VistaVuelos.class);
             List<VistaVuelos> vuelos = query.getResultList();
+            if(vuelos.size()==0){
+                JOptionPane.showMessageDialog(null, "No se han encontrado vuelos en el sistema para los datos especificados, vuelva a la ventana de busqueda y realice otra busqueda");
+                return;
+            }
             for (VistaVuelos vuelo : vuelos) {
                 System.out.println(vuelo.getOrigen());
             }
             
-            String[] tableTitles = {"ID VUELO", "FECHA", "VACANTES","ORIGEN", "DESTINO", "TIEMPO ESTIMADO", "VACANTES", "AEROLINEA","ID AVION","MODELO"};
+            String[] tableTitles = {"ID VUELO", "FECHA", "VACANTES","ORIGEN", "DESTINO", "PRECIO", "VACANTES", "AEROLINEA","ID AVION","MODELO"};
             ModeloVuelosRegreso = new DefaultTableModel(null, tableTitles);
             String[] vuelo;
             vuelo = new String[10];
