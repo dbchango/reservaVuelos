@@ -133,6 +133,7 @@ public class fReserva extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaVuelos = new javax.swing.JTable();
         jLabel30 = new javax.swing.JLabel();
+        kButton9 = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -625,7 +626,7 @@ public class fReserva extends javax.swing.JFrame {
                 kButton7ActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(kButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 880, 150, 33));
+        kGradientPanel1.add(kButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 930, 150, 33));
 
         kButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-back-arrow-16.png"))); // NOI18N
         kButton8.setText("Regresar");
@@ -659,6 +660,20 @@ public class fReserva extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel30.setText("Vuelos reservados");
         kGradientPanel1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 800, 470, -1));
+
+        kButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/imgs/icons8-info-popup-16.png"))); // NOI18N
+        kButton9.setText("Información de la reserva");
+        kButton9.setkEndColor(new java.awt.Color(66, 41, 253));
+        kButton9.setkHoverEndColor(new java.awt.Color(151, 255, 151));
+        kButton9.setkHoverForeGround(new java.awt.Color(204, 204, 255));
+        kButton9.setkHoverStartColor(new java.awt.Color(69, 230, 26));
+        kButton9.setkStartColor(new java.awt.Color(157, 155, 220));
+        kButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton9ActionPerformed(evt);
+            }
+        });
+        kGradientPanel1.add(kButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 1000, 150, 33));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -814,10 +829,15 @@ public class fReserva extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cedulaUsuarioActionPerformed
 
+    private void kButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton9ActionPerformed
+        new infoReserva(idReserva).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
- /*   public static void main(String args[]) {
+ public static void main(String args[]) {
  
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -825,7 +845,7 @@ public class fReserva extends javax.swing.JFrame {
                 new fReserva(a, "Solo Ida", 45.5, 5).setVisible(true);
             }
         });
-    }*/
+    }
     
     
     private void persistirItinerarios(){
@@ -942,6 +962,7 @@ public class fReserva extends javax.swing.JFrame {
     private keeptoo.KButton kButton3;
     private keeptoo.KButton kButton7;
     private keeptoo.KButton kButton8;
+    private keeptoo.KButton kButton9;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JTable listaVuelos;
     private javax.swing.JTextField nombreApellidosUsuario;
